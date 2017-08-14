@@ -20,11 +20,9 @@
 @endsection
 
 @section('body')
-
-     <div class="container">
 	    	
      	<div class="row">
-     		<div class="col s2">
+     		<div class="col s3">
      			<!-- side navbar -->
 		        <ul id="slide-out" class="side-nav fixed">
 				    <li><a class="waves-effect" href="/stok"><i class="material-icons">view_list</i>Stok Barang</a></li>
@@ -36,12 +34,12 @@
 				  <a href="#" data-activates="slide-out" class="button-collapse waves-effect button-floating"><i class="material-icons">menu</i></a>
 		     	<!-- end side navbar -->		
      		</div>
-     		<div class="col s10">
+     		<div class="col s9">
      			<div class="row">
      				
      			</div>
-     			<div class="row">
-     				<a class="btn-flat waves-effect waves-light blue accent-2 pulse" style="color: white;" href="{{url('penjualan/tambah')}}"><i class="material-icons left">add</i>TAMBAH Penjualan</a>
+     			<div class="row right">
+     				<a class="btn-flat waves-effect waves-light blue accent-2" style="color: white;" href="{{url('barangmasuk/tambah')}}"><i class="material-icons left">add</i>TAMBAH BARANG MASUK</a>
      			</div>
      			<div class="row">
 	     			<!-- Table -->
@@ -49,36 +47,32 @@
 				        <thead>
 				          <tr>
 				          	  <th>No.Transaksi</th>
+				              <th>No.Faktur</th>
 				              <th>Tanggal Transaksi</th>
-				              <th>Pembeli</th>
 				              <th>Nama Barang</th>
+				              <th>Nama Supplier</th>
 				              <th>Jumlah</th>
-				              <th>Harga Barang</th>
-				              <th>Satuan</th>
-				              <th>Total</th>
+				              <th>Total Harga</th>
 				          </tr>
 				        </thead>
-				        @foreach($penjualan as $key)
+				        @foreach($barang_masuk as $key)
 				        <tbody>
 				          <tr>
 				          	<td>{{$key->no_trans}}</td>
+				            <td>{{$key->no_fak}}</td>
 				            <td>{{$key->tgl_trans}}</td>
-				            <td>{{$key->nama_pembeli}}</td>
 				            <td>{{$key->nama_barang}}</td>
-				            <td>{{$key->jumlah_barang}}</td>
-				            <td>{{$key->harga_barang}}</td>
-				            <td>{{$key->satuan}}</td>
+				            <td>{{$key->supplier}}</td>
+				            <td>{{$key->jumlah}}</td>
 				            <td>{{$key->total_harga}}</td>
 				          </tr>
 				        </tbody>
 				        @endforeach
 				    </table>
-			     	<!-- End Table -->	
+			     	<!-- End Table -->
      			</div>
      		</div>
      	</div>
-     </div>
-     
 
 @endsection
 

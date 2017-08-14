@@ -76,8 +76,8 @@
 				        </div>
 				    </div>
 				        <div align="center" class="col s12">
-				        	<a class="btn-flat waves-effect waves-light red" href="/barang"><i class="material-icons left">cancel</i>Batal</a>
-					      	<button class="btn-flat waves-effect waves-light blue accent-2" type="submit"><i class="material-icons right">send</i>Submit</button>
+				        	<a class="btn-flat waves-effect waves-light red" href="/barang" style="color: white;"><i class="material-icons left">cancel</i>Batal</a>
+					      	<button class="btn-flat waves-effect waves-light blue accent-2" style="color: white;" type="submit"><i class="material-icons right">send</i>Submit</button>
 					    	<input type="hidden" name="_token" value="{{csrf_token()}}">
 				        </div>
 		    	</form>

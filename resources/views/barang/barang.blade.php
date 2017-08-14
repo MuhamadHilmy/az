@@ -17,11 +17,8 @@
 @endsection
 
 @section('body')
-
-     <div class="container">
-	    	
      	<div class="row">
-     		<div class="col s2">
+     		<div class="col s3">
      			<!-- side navbar -->
 		        <ul id="slide-out" class="side-nav fixed">
 				    <li><a class="waves-effect" href="/stok"><i class="material-icons">view_list</i>Stok Barang</a></li>
@@ -33,11 +30,11 @@
 				  <a href="#" data-activates="slide-out" class="button-collapse waves-effect button-floating"><i class="material-icons">menu</i></a>
 		     	<!-- end side navbar -->		
      		</div>
-     		<div class="col s10">
+     		<div class="col s9">
      			<div class="row">
      				
      			</div>
-     			<div class="row">
+     			<div class="row right">
      				<a class="btn-flat waves-effect waves-light blue accent-2" style="color: white;" href="{{url('barang/tambah')}}"><i class="material-icons left">add</i>TAMBAH BARANG</a>
      			</div>
      			<div class="row">
@@ -73,10 +70,11 @@
 				    </table>
 			     	<!-- End Table -->	
      			</div>
+     			<div class="row right">
+		     		{!! ($barang)->render() !!}
+		     	</div>
      		</div>
-     	</div>
-     </div>
-     
+     	</div>    
 
 @endsection
 

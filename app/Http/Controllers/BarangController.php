@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Pagination\Presenter;
 
 use App\Barang;
 use App\penjualan;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Image;
+use DB;
 
 class BarangController extends Controller
 {
@@ -32,29 +34,19 @@ class BarangController extends Controller
 
     public function Barang(){
         $data['barang'] = Barang::paginate(10);
-        return view('barang')->with($data);
-    }
-
-    public function penjualan(){
-        $data['penjualan'] = penjualan::paginate(10);
-        return view('penjualan')->with($data);
-    }
-
-    public function pt(){
-        $data['qty'] = Barang::paginate(10);
-        return view('tambah_penjualan')->with($data);
+        return view('barang.barang')->with($data);
     }
 
     public function stok(){
 
-        $data['barang'] = Barang::paginate(10);
+        $data['barang'] = Barang::paginate(1);
         return view('stok')->with($data);
     }
 
     public function edit($id)
     {
         $data['barang'] = Barang::find($id);
-        return view('ubah_barang')->with($data);
+        return view('barang.ubah_barang')->with($data);
     }
 
     public function update(request $request)
@@ -82,27 +74,6 @@ class BarangController extends Controller
         $a->delete();
 
         return redirect(url('barang'));
-    }
-
-    public function add_penjualan() {
-
-        $data['qty'] = Barang::getAll();
-        return view('tambah_barang');
-
-        $a = new penjualan;
-        $a->no_trans = input::get('no_trans');
-        $a->tgl_trans = input::get('tgl_trans');
-        $a->nama_pembeli = input::get('nama_pembeli');
-        $a->nama_barang = input::get('nama_barang');
-        $a->jumlah_barang = input::get('jumlah_barang');
-        $a->harga_barang = input::get('harga_barang');
-        $a->satuan = input::get('satuan');
-        $a->total_harga = input::get('total_harga');
-        $a->save();
-
-
-
-        return redirect(url('penjualan'));
     }
 }
 

@@ -33,53 +33,53 @@
 		     	<!-- end side navbar -->		
      		</div>
      		<div class="col s10">
-     			<form class="col s12" action="{{url('penjualan/add')}}" method="POST" enctype="multipart/form-data">
+     			<form class="col s12" action="{{url('barang/update')}}" method="POST" enctype="multipart/form-data">
 				    <div class="row">
-				        <div class="input-field col s12">
-				          <i class="material-icons prefix">account_circle</i>
-				          <input type="text" name="tgl_trans" class="datepicker">
-				          <label for="icon_prefix">Tanggal Transaksi</label>
+				        <div class="file-field input-field col s12">
+					      <div class="btn-flat waves-effect waves-light blue accent-2">
+					        <span>Pilih Gambar</span>
+					        <input type="file" name="gambars">
+					      </div>
+					      <div class="file-path-wrapper">
+					        <input class="file-path validate" name="gmbr" value="{{$barang->gambar}}" type="text">
+					      </div>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" name="nama_pembeli" class="validate">
-				          <label for="icon_prefix">Nama Pembeli</label>
-				        </div>
-				        @foreach($qty as $qtu)
-				        <div class="input-field col s6">
-						    <select>
-						      <option value="" disabled selected>Pilih Barang</option>
-						      <option value="{{$qtu->nama_barang}}">{{$qtu->nama_barang}}</option>
-						    </select>
-						    <label>Nama Barang</label>
-						  </div>
-				        @endforeach
+				          <input id="icon_prefix" type="text" name="kode_barang" class="validate" value="{{$barang->kode_barang}}" required>
+				          <label for="icon_prefix">Kode Barang</label>
+					    </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" name="jumlah_barang" class="validate">
-				          <label for="icon_prefix">Jumlah Barang</label>
+				          <input id="icon_prefix" type="text" name="nama_barang" class="validate" value="{{$barang->nama_barang}}" required>
+				          <label for="icon_prefix">Nama Barang</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" name="harga_barang" class="validate">
-				          <label for="icon_prefix">Harga Barang</label>
-				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" name="satuan" class="validate">
+				          <input id="icon_prefix" type="text" name="satuan" class="validate" value="{{$barang->satuan}}">
 				          <label for="icon_prefix">Satuan</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" name="total_harga" class="validate">
-				          <label for="icon_prefix">{{$qty->id}}</label>
+				          <input id="icon_prefix" type="text" name="qty" class="validate" value="{{$barang->qty}}">
+				          <label for="icon_prefix">Qty(Jumlah)</label>
+				        </div>
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">account_circle</i>
+				          <input id="icon_prefix" type="text" name="harga_beli" class="validate" value="{{$barang->harga_beli}}">
+				          <label for="icon_prefix">Harga Beli</label>
+				        </div>
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">account_circle</i>
+				          <input id="icon_prefix" type="text" name="harga_jual" class="validate" value="{{$barang->harga_jual}}">
+				          <label for="icon_prefix">Harga Jual</label>
 				        </div>
 				    </div>
 				        <div align="center" class="col s12">
-				        	<a class="btn-flat waves-effect waves-light red" href="/penjualan"><i class="material-icons left">cancel</i>Batal</a>
-					      	<button class="btn-flat waves-effect waves-light blue accent-2" type="submit"><i class="material-icons right">send</i>Submit</button>
+				        	<a class="btn-flat waves-effect waves-light red" href="/barang" style="color: white;"><i class="material-icons left">cancel</i>Batal</a>
+					      	<button class="btn-flat waves-effect waves-light blue accent-2" style="color: white;" type="submit"><i class="material-icons right">send</i>Submit</button>
 					    	<input type="hidden" name="_token" value="{{csrf_token()}}">
-					    	<input type="hidden" name="id" value="{{$qty->id}}">
+					    	<input type="hidden" name="id" value="{{$barang->id}}"></input>
 				        </div>
 		    	</form>
 	     	</div>
@@ -89,14 +89,4 @@
 @endsection
 
 @section('footer')
-	<script type="text/javascript">
-			$('.datepicker').pickadate({
-			    selectMonths: true, // Creates a dropdown to control month
-			    selectYears: 15, // Creates a dropdown of 15 years to control year,
-			    today: 'Today',
-			    clear: 'Clear',
-			    close: 'Ok',
-			    closeOnSelect: false // Close upon selecting a date,
-			  });
-	</script>
 @endsection

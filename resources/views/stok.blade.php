@@ -20,11 +20,8 @@
 @endsection
 
 @section('body')
-
-     <div class="container">
-	    	
      	<div class="row">
-     		<div class="col s2">
+     		<div class="col s3">
      			<!-- side navbar -->
 		        <ul id="slide-out" class="side-nav fixed">
 				    <li><a class="waves-effect" href="/stok"><i class="material-icons">view_list</i>Stok Barang</a></li>
@@ -36,8 +33,9 @@
 				  <a href="#" data-activates="slide-out" class="button-collapse waves-effect button-floating"><i class="material-icons">menu</i></a>
 		     	<!-- end side navbar -->		
      		</div>
-     		<div class="col s10">
+     		<div class="col s9">
      			<!-- Table -->
+     			<div class="row">
 		     	<table class="responsive-table">
 			        <thead>
 			          <tr>
@@ -46,6 +44,7 @@
 			              <th>Nama Barang</th>
 			              <th>Qty</th>
 			              <th>Satuan</th>
+			              <th>Harga</th>
 			              <th>Aksi</th>
 			          </tr>
 			        </thead>
@@ -57,6 +56,7 @@
 			            <td>{{$key->nama_barang}}</td>
 			            <td>{{$key->qty}}</td>
 			            <td>{{$key->satuan}}</td>
+			            <td>{{$key->harga_jual}}</td>
 			            <td>
 				            <div>
 				            	<a class="btn-floating waves-effect waves-light blue accent-2" href="{{url('barang/'.$key->id)}}"><i class="material-icons">edit</i></a>
@@ -66,11 +66,13 @@
 			        </tbody>
 			        @endforeach
 			    </table>
+			    </div>
 		     	<!-- End Table -->	
+		     	<div class="row right">
+		     		{!! ($barang)->render() !!}
+		     	</div>
      		</div>
      	</div>
-     </div>
-     
 
 @endsection
 
